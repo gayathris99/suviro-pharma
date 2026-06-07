@@ -1,9 +1,13 @@
+import Navbar from '@/components/layout/Navbar'
+
 export default function Home() {
   return (
-    <main>
-      <p style={{ padding: '40px', color: 'var(--muted)' }}>
-        Suviro Pharma — building components one by one...
-      </p>
-    </main>
+    <>
+      <Navbar />
+      <main style={{ paddingTop: '64px' }}>
+        <p style={{ padding: '40px', color: 'var(--muted)' }}>
+        </p>
+      </main>
+    </>
   )
 }
