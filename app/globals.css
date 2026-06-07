@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  html { color-scheme: light; }
+  body { background: #ffffff; color: #1A1A3A; }
+}
+
+/* Brand colours */
+:root {
+  --navy:       #2E3192;
+  --navy-dark:  #1A1A3A;
+  --navy-light: #EDEDFE;
+  --navy-mid:   #D4D3F0;
+  --mint:       #7BC8A4;
+  --sky:        #89C4E1;
+  --gold:       #E8D890;
+  --sage:       #8CC6A0;
+  --bg:         #F8F9FF;
+  --border:     #EDEDFE;
+  --text:       #1A1A3A;
+  --muted:      #6A6A80;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #ffffff;
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes petal-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes petal-spin-right {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to   { transform: translateY(-50%) rotate(360deg); }
+}
+
+@keyframes petal-spin-offset {
+  from { transform: rotate(30deg); }
+  to   { transform: rotate(390deg); }
+}
+
+@media (max-width: 768px) {
+  .desktop-nav     { display: none !important; }
+  .mobile-menu-btn { display: block !important; }
+}
+@media (min-width: 769px) {
+  .mobile-menu { display: none !important; }
+}
