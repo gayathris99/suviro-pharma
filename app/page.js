@@ -1,13 +1,10 @@
 import Navbar from '@/components/layout/Navbar'
-
+import Hero from '@/components/sections/Hero'
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main style={{ paddingTop: '64px' }}>
-        <p style={{ padding: '40px', color: 'var(--muted)' }}>
-        </p>
-      </main>
+      <Hero />
     </>
   )
 }
