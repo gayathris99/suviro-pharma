@@ -75,7 +75,7 @@ export default function Footer() {
               <FooterFlower />
             </div>
             <div className="footer-logo-text">
-              Suviro <span>Pharma</span>
+              Suviro <span>PharmaLife Pvt Ltd.</span>
             </div>
           </div>
           <p className="footer-tagline">Progress Through Science</p>
