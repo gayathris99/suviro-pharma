@@ -54,7 +54,7 @@ export default function Navbar() {
 
       {/* ── Logo ── */}
       <Link href="/" className="navbar-logo">
-        Suviro Pharma
+        Suviro Pharmalife Pvt Ltd.
       </Link>
 
       {/* ── Desktop nav ── */}
