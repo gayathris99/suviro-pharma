@@ -13,8 +13,8 @@ const enquiryTypes = [
 
 const contactDetails = [
   { icon: '📍', text: 'Plot 42, Pharma SEZ, Hyderabad – 500084' },
-  { icon: '📞', text: '+91 98765 43210' },
-  { icon: '✉️', text: 'info@suviropharma.com' },
+  { icon: '📞', text: '+91 8142571702' },
+  { icon: '✉️', text: 'suviropharmalife@gmail.com' },
 ]
 
 export default function Contact() {

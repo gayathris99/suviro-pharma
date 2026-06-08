@@ -70,7 +70,7 @@ export async function POST(request) {
           <p style="margin-top: 16px;"><strong>Your enquiry type:</strong> ${enquiryType}</p>
           <p style="margin-top: 24px; color: #888; font-size: 13px;">
             — Team Suviro Pharma<br/>
-            info@suviropharma.com
+            suviropharmalife@gmail.com
           </p>
         </div>
       `,
