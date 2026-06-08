@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import './Footer.css'
 
-// Small petal flower for logo (no atom)
 function FooterFlower() {
   const petals = [
     { angle: 0,   color: '#8CC6A0' },
@@ -50,26 +49,33 @@ const aboutLinks = [
 ]
 
 const contactDetails = [
-  { label: 'Plot 42, Pharma SEZ, Hyderabad – 500084', href: '#' },
-  { label: '+91 8142571702',                          href: 'tel:+919876543210' },
-  { label: 'suviropharmalife@gmail.com',                    href: 'mailto:info@suviropharma.com' },
+  {
+    label: 'Plot 42, Pharma SEZ, Hyderabad – 500084',
+    href:  '#',
+  },
+  {
+    label: '+91 8142571702',
+    href:  'tel:+918142571702',
+  },
+  {
+    label: 'suviropharmalife@gmail.com',
+    href:  'mailto:suviropharmalife@gmail.com',
+  },
 ]
 
 export default function Footer() {
   return (
     <footer className="footer">
-
-      {/* ── Top grid ── */}
       <div className="footer-top">
 
-        {/* Brand column */}
+        {/* Brand */}
         <div className="footer-brand">
           <div className="footer-logo">
             <div className="footer-logo-flower">
               <FooterFlower />
             </div>
             <div className="footer-logo-text">
-              Suviro <span>PharmaLife Pvt Ltd.</span>
+              Suviro <span>Pharma</span>
             </div>
           </div>
           <p className="footer-tagline">Progress Through Science</p>
@@ -120,15 +126,14 @@ export default function Footer() {
 
       </div>
 
-      {/* ── Bottom bar ── */}
+      {/* Bottom bar */}
       <div className="footer-bottom">
-        <p>© 2026 Suviro Pharma Pvt. Ltd. All rights reserved.</p>
+        <p>© 2026 Suviro Pharmalife Pvt. Ltd. All rights reserved.</p>
         <div className="footer-bottom-links">
           <Link href="/privacy-policy">Privacy Policy</Link>
           <Link href="/terms">Terms of Use</Link>
         </div>
       </div>
-
     </footer>
   )
 }
