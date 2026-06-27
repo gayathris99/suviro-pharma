@@ -1,70 +1,138 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
-@import "tailwindcss";
+/* ═══════════════════════════════════════════
+   SUVIRO PHARMALIFE — GLOBAL STYLES
+   ═══════════════════════════════════════════ */
 
-@layer base {
-  html { color-scheme: light; }
-  body { background: #ffffff; color: #1A1A3A; }
-}
-
-/* Brand colours */
-:root {
-  --navy:       #2E3192;
-  --navy-dark:  #1A1A3A;
-  --navy-light: #EDEDFE;
-  --navy-mid:   #D4D3F0;
-  --mint:       #7BC8A4;
-  --sky:        #89C4E1;
-  --gold:       #E8D890;
-  --sage:       #8CC6A0;
-  --bg:         #F8F9FF;
-  --border:     #EDEDFE;
-  --text:       #1A1A3A;
-  --muted:      #6A6A80;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
-  background: #ffffff;
-  color: var(--text);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-
-  /* Sticky footer */
-  display:        flex;
-  flex-direction: column;
-  min-height:     100vh;
-}
-
-@keyframes petal-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-@keyframes petal-spin-right {
-  from { transform: translateY(-50%) rotate(0deg); }
-  to   { transform: translateY(-50%) rotate(360deg); }
-}
-
-@keyframes petal-spin-offset {
-  from { transform: rotate(30deg); }
-  to   { transform: rotate(390deg); }
-}
-
-@media (max-width: 768px) {
-  .desktop-nav     { display: none !important; }
-  .mobile-menu-btn { display: block !important; }
-}
-@media (min-width: 769px) {
-  .mobile-menu { display: none !important; }
-}
+   :root {
+    /* Font — SF Pro stack (client-specified) */
+    --font-sf: -apple-system, 'SF Pro Display', 'SF Pro Text',
+               'Helvetica Neue', Arial, sans-serif;
+  
+    /* Brand colors */
+    --dark:   #0b1e3c;   /* deep navy */
+    --accent: #6366f1;   /* indigo */
+    --muted:  #6b7280;   /* body grey */
+    --border: #e5e7eb;   /* hairline */
+    --bg:     #f5f6f8;   /* soft section bg */
+    --card:   #ffffff;
+  
+    /* Segment dot colors */
+    --neuro:  #7c3aed;
+    --nephro: #2563eb;
+    --cardio: #dc2626;
+    --gastro: #ca8a04;
+  }
+  
+  /* ── Reset ── */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--font-sf);
+    background: #ffffff;
+    color: var(--dark);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  button {
+    font-family: var(--font-sf);
+    cursor: pointer;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  /* ── Sticky-footer layout ── */
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main {
+    flex: 1;
+  }
+  
+  /* ── Shared keyframes ── */
+  @keyframes spin     { to { transform: rotate(360deg); } }
+  @keyframes spin-rev { to { transform: rotate(-360deg); } }
+  @keyframes spin-translate {
+    to { transform: translateY(-50%) rotate(360deg); }
+  }
+  
+  /* ── Shared section primitives ── */
+  .section {
+    padding: 96px 40px;
+  }
+  
+  .section--bg {
+    background: var(--bg);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  /* Eyebrow tag */
+  .eyebrow {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  
+  .eyebrow--chip {
+    background: #eef2ff;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+  
+  /* Section heading */
+  .section-title {
+    font-size: clamp(32px, 3.8vw, 52px);
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+  
+  .section-body {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 520px;
+    margin-top: 16px;
+  }
+  
+  /* ── Responsive base ── */
+  @media (max-width: 768px) {
+    .section {
+      padding: 64px 20px;
+    }
+  }

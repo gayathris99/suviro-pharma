@@ -2,159 +2,107 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Flower from '@/components/ui/Flower'
 import './Navbar.css'
 
-const navItems = [
-  {
-    label: 'About Us',
-    dropdown: [
-      { label: 'Vision & Mission',   href: '/about/vision-mission' },
-      { label: 'About Suviro',       href: '/about' },
-      { label: 'Board of Directors', href: '/about/board' },
-      { label: 'Top Leadership',     href: '/about/leadership' },
-    ],
-  },
-  {
-    label: 'Products',
-    href:  '/products',
-  },
+const SEGMENTS = [
+  { label: 'Neuro',  color: 'var(--neuro)'  },
+  { label: 'Nephro', color: 'var(--nephro)' },
+  { label: 'Cardio', color: 'var(--cardio)' },
+  { label: 'Gastro', color: 'var(--gastro)' },
+]
+
+const NAV_LINKS = [
+  { label: 'Home',       href: '/'           },
+  { label: 'About',      href: '/about'      },
+  { label: 'Products',   href: '/products'   },
+  { label: 'Visual Aids', href: '/visual-aids' },
+  { label: 'Contact',    href: '/contact'    },
 ]
 
 export default function Navbar() {
-  const [scrolled,       setScrolled]       = useState(false)
-  const [menuOpen,       setMenuOpen]       = useState(false)
-  const [activeDropdown, setActiveDropdown] = useState(null)
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
-  // Shadow on scroll
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Dropdown open/close with small delay so
-  // the mouse can travel from button → panel
-  const openDropdown  = (label) => {
-    clearTimeout(window._dropdownTimer)
-    setActiveDropdown(label)
-  }
-
-  const closeDropdown = () => {
-    window._dropdownTimer = setTimeout(() => {
-      setActiveDropdown(null)
-    }, 150)
-  }
-
-  const cancelClose = () => {
-    clearTimeout(window._dropdownTimer)
-  }
-
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <div className="header-wrap">
 
-      {/* ── Logo ── */}
-      <Link href="/" className="navbar-logo">
-        Suviro Pharmalife Pvt Ltd.
-      </Link>
+      {/* ── Topbar ── */}
+      <div className="topbar">
+        <div className="topbar-inner">
+          <span className="topbar-label">Therapeutic Segments</span>
+          <div className="topbar-segments">
+            {SEGMENTS.map((s) => (
+              <a key={s.label} href="#" className="topbar-segment">
+                <span className="segment-dot" style={{ background: s.color }} />
+                {s.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
 
-      {/* ── Desktop nav ── */}
-      <ul className="navbar-links">
-        {navItems.map((item) => (
-          <li
-            key={item.label}
-            className="nav-item"
-            onMouseEnter={() => item.dropdown && openDropdown(item.label)}
-            onMouseLeave={() => item.dropdown && closeDropdown()}
-          >
-            {item.dropdown ? (
-              <>
-                {/* Trigger */}
-                <button className={`nav-btn ${activeDropdown === item.label ? 'active' : ''}`}>
-                  {item.label}
-                </button>
+      {/* ── Navbar ── */}
+      <nav className={`navbar ${scrolled ? 'navbar--shadow' : ''}`}>
+        <div className="navbar-inner">
 
-                {/* Dropdown */}
-                {activeDropdown === item.label && (
-                  <div
-                    className="dropdown"
-                    onMouseEnter={cancelClose}
-                    onMouseLeave={closeDropdown}
-                  >
-                    <div className="dropdown-inner">
-                      {item.dropdown.map((sub) => (
-                        <Link
-                          key={sub.href}
-                          href={sub.href}
-                          className="dropdown-link"
-                          onClick={() => setActiveDropdown(null)}
-                        >
-                          {sub.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </>
-            ) : (
-              <Link href={item.href} className="nav-link">
-                {item.label}
-              </Link>
-            )}
-          </li>
-        ))}
-      </ul>
-
-      {/* ── Get in Touch ── */}
-      <Link href="/contact" className="navbar-cta">
-        Get in Touch
-      </Link>
-
-      {/* ── Mobile hamburger ── */}
-      <button
-        className="navbar-hamburger"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        {menuOpen ? '✕' : '☰'}
-      </button>
-
-      {/* ── Mobile menu ── */}
-      {menuOpen && (
-        <div className="mobile-menu">
-
-          {/* About Us section */}
-          <p className="mobile-section-label">About Us</p>
-          {navItems[0].dropdown.map((sub) => (
-            <Link
-              key={sub.href}
-              href={sub.href}
-              className="mobile-link"
-              onClick={() => setMenuOpen(false)}
-            >
-              {sub.label}
-            </Link>
-          ))}
-
-          <div className="mobile-divider" />
-
-          {/* Products */}
-          <Link
-            href="/products"
-            className="mobile-link"
-            onClick={() => setMenuOpen(false)}
-          >
-            Products
+          {/* Logo */}
+          <Link href="/" className="navbar-logo">
+            <Flower size={52} spin spinDuration={30} />
+            <span className="navbar-logo-text">
+              <span className="navbar-logo-name">Suviro</span>
+              <span className="navbar-logo-sub">Progress Through Science</span>
+            </span>
           </Link>
+
+          {/* Desktop links */}
+          <div className="navbar-links">
+            {NAV_LINKS.map((l) => (
+              <Link key={l.href} href={l.href}>{l.label}</Link>
+            ))}
+          </div>
 
           {/* CTA */}
-          <Link
-            href="/contact"
-            className="mobile-cta"
-            onClick={() => setMenuOpen(false)}
+          <Link href="/contact" className="navbar-cta">Partner With Us</Link>
+
+          {/* Mobile hamburger */}
+          <button
+            className="navbar-hamburger"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label="Toggle menu"
           >
-            Get in Touch
-          </Link>
+            {menuOpen ? '✕' : '☰'}
+          </button>
         </div>
-      )}
-    </nav>
+
+        {/* Mobile dropdown */}
+        {menuOpen && (
+          <div className="navbar-mobile">
+            {NAV_LINKS.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setMenuOpen(false)}
+              >
+                {l.label}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              className="navbar-mobile-cta"
+              onClick={() => setMenuOpen(false)}
+            >
+              Partner With Us
+            </Link>
+          </div>
+        )}
+      </nav>
+    </div>
   )
 }
