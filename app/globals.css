@@ -136,3 +136,20 @@
       padding: 64px 20px;
     }
   }
+  
+  /* ═══ MOBILE PADDING TIERS ═══ */
+  @media (max-width: 1024px) {
+    .section {
+      padding: 80px 32px;
+    }
+  }
+  @media (max-width: 600px) {
+    .section {
+      padding: 56px 18px;
+    }
+  }
+  @media (max-width: 400px) {
+    .section {
+      padding: 48px 16px;
+    }
+  }

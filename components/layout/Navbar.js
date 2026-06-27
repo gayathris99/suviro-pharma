@@ -56,7 +56,7 @@ export default function Navbar() {
           <Link href="/" className="navbar-logo">
             <Flower size={52} spin spinDuration={30} />
             <span className="navbar-logo-text">
-              <span className="navbar-logo-name">Suviro</span>
+              <span className="navbar-logo-name">Suviro Pharmalife</span>
               <span className="navbar-logo-sub">Progress Through Science</span>
             </span>
           </Link>

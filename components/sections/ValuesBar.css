@@ -44,7 +44,7 @@
 }
 
 /* ═══ RESPONSIVE ═══ */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .values-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -54,5 +54,18 @@
   .value-item:nth-child(1),
   .value-item:nth-child(2) {
     border-bottom: 1px solid var(--border);
+  }
+}
+@media (max-width: 480px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  .value-item {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 22px 24px;
+  }
+  .value-item:last-child {
+    border-bottom: none;
   }
 }

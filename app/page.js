@@ -4,6 +4,8 @@ import Divisions from '@/components/sections/Divisions'
 import HowWeWork from '@/components/sections/HowWeWork'
 import ClinicianVoices from '@/components/sections/ClinicianVoices'
 import NationalReach from '@/components/sections/NationalReach'
+import Faq from '@/components/sections/Faq'
+import Promise from '@/components/sections/Promise'
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
       <HowWeWork/>
       <ClinicianVoices/>
       <NationalReach/>
+      <Faq/>
+      <Promise/>
     </>
   )
 }

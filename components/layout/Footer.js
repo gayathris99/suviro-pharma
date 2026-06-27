@@ -1,138 +1,76 @@
 import Link from 'next/link'
+import Flower from '@/components/ui/Flower'
 import './Footer.css'
 
-function FooterFlower() {
-  const petals = [
-    { angle: 0,   color: '#8CC6A0' },
-    { angle: 30,  color: '#B8D88C' },
-    { angle: 60,  color: '#E8D890' },
-    { angle: 90,  color: '#DDD090' },
-    { angle: 120, color: '#B0B8C8' },
-    { angle: 150, color: '#89C4E1' },
-    { angle: 180, color: '#A0C8E8' },
-    { angle: 210, color: '#7BC8A4' },
-    { angle: 240, color: '#8CC6A0' },
-    { angle: 270, color: '#A8D08D' },
-    { angle: 300, color: '#E8D890' },
-    { angle: 330, color: '#89C4E1' },
-  ]
-  return (
-    <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g transform="translate(14,14)">
-        {petals.map((p) => (
-          <ellipse
-            key={p.angle}
-            cx={0} cy={-6.5}
-            rx={2.5} ry={5.8}
-            fill={p.color}
-            opacity={0.7}
-            transform={`rotate(${p.angle})`}
-          />
-        ))}
-        <circle cx={0} cy={0} r={3.2} fill="#080614" />
-      </g>
-    </svg>
-  )
-}
-
-const quickLinks = [
-  { label: 'Home',     href: '/' },
-  { label: 'About Us', href: '/about' },
-  { label: 'Products', href: '/products' },
-  { label: 'Contact',  href: '/contact' },
+const NAV_LINKS = [
+  { label: 'Home',        href: '/'            },
+  { label: 'About',       href: '/about'       },
+  { label: 'Products',    href: '/products'    },
+  { label: 'Visual Aids', href: '/visual-aids' },
+  { label: 'Contact',     href: '/contact'     },
 ]
 
-const aboutLinks = [
-  { label: 'Vision & Mission',   href: '/about/vision-mission' },
-  { label: 'Board of Directors', href: '/about/board' },
-  { label: 'Top Leadership',     href: '/about/leadership' },
-]
-
-const contactDetails = [
-  {
-    label: 'Plot 42, Pharma SEZ, Hyderabad – 500084',
-    href:  '#',
-  },
-  {
-    label: '+91 8142571702',
-    href:  'tel:+918142571702',
-  },
-  {
-    label: 'suviropharmalife@gmail.com',
-    href:  'mailto:suviropharmalife@gmail.com',
-  },
+const REACH = [
+  { label: 'suviropharmalife@gmail.com', href: 'mailto:suviropharmalife@gmail.com' },
+  { label: '+91 8142571702',             href: 'tel:+918142571702'                 },
+  { label: 'Suviro Pharmalife Pvt. Ltd, India', href: '#'                          },
 ]
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footer-top">
+      <div className="footer-inner">
 
-        {/* Brand */}
-        <div className="footer-brand">
-          <div className="footer-logo">
-            <div className="footer-logo-flower">
-              <FooterFlower />
+        <div className="footer-top">
+
+          {/* Brand */}
+          <div className="footer-brand">
+            <div className="footer-logo">
+              <Flower size={42} spin spinDuration={30} />
+              <div>
+                <div className="footer-name">Suviro</div>
+                <div className="footer-sub">Progress Through Science</div>
+              </div>
             </div>
-            <div className="footer-logo-text">
-              Suviro <span>PharmaLife Pvt Ltd.</span>
-            </div>
+            <p className="footer-desc">
+              A pharmaceutical marketing company committed to quality,
+              ethics and empathy across Neuro, Nephro, Cardio and Gastro
+              therapeutic divisions.
+            </p>
           </div>
-          <p className="footer-tagline">Progress Through Science</p>
-          <p className="footer-desc">
-            Premium generic pharmaceuticals — manufactured with
-            precision, distributed with care, proudly made in India.
-          </p>
-          <p className="footer-made">
-            🇮🇳 Proudly <span>Made in India</span>
-          </p>
+
+          {/* Navigate */}
+          <div className="footer-col">
+            <h4>Navigate</h4>
+            <ul>
+              {NAV_LINKS.map((l) => (
+                <li key={l.href}><Link href={l.href}>{l.label}</Link></li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Reach Us */}
+          <div className="footer-col">
+            <h4>Reach Us</h4>
+            <ul>
+              {REACH.map((r) => (
+                <li key={r.label}><a href={r.href}>{r.label}</a></li>
+              ))}
+            </ul>
+          </div>
+
         </div>
 
-        {/* Quick Links */}
-        <div className="footer-col">
-          <h4>Quick Links</h4>
-          <ul>
-            {quickLinks.map((l) => (
-              <li key={l.href}>
-                <Link href={l.href}>{l.label}</Link>
-              </li>
-            ))}
-          </ul>
+        {/* Bottom bar */}
+        <div className="footer-bottom">
+          <div className="footer-copy">
+            © 2026 Suviro Pharmalife Pvt. Ltd
+          </div>
+          <div className="footer-values">
+            Quality · Ethics · Empathy · Sensibility
+          </div>
         </div>
 
-        {/* About */}
-        <div className="footer-col">
-          <h4>About</h4>
-          <ul>
-            {aboutLinks.map((l) => (
-              <li key={l.href}>
-                <Link href={l.href}>{l.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Contact */}
-        <div className="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            {contactDetails.map((d) => (
-              <li key={d.label}>
-                <a href={d.href}>{d.label}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-      </div>
-
-      {/* Bottom bar */}
-      <div className="footer-bottom">
-        <p>© 2026 Suviro Pharmalife Pvt. Ltd. All rights reserved.</p>
-        <div className="footer-bottom-links">
-          <Link href="/privacy-policy">Privacy Policy</Link>
-          <Link href="/terms">Terms of Use</Link>
-        </div>
       </div>
     </footer>
   )
