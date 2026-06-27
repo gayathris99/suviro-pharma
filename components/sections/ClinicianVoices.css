@@ -1,0 +1,66 @@
+/* ═══ CLINICIAN VOICES ═══ */
+.cv-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.cv-right {
+  position: relative;
+}
+
+.cv-flower {
+  position: absolute;
+  top: -50px;
+  right: -110px;
+  width: 300px;
+  height: 300px;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.cv-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+}
+
+.cv-quote {
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.cv-role {
+  font-size: 10px;
+  font-weight: 600;
+  color: #9ca3af;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 900px) {
+  .cv-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+@media (max-width: 540px) {
+  .cv-grid {
+    grid-template-columns: 1fr;
+  }
+}

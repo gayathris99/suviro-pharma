@@ -1,19 +1,19 @@
 import Hero     from '@/components/sections/Hero'
 import ValuesBar from '@/components/sections/ValuesBar'
-// import About    from '@/components/sections/About'
-// import Products from '@/components/sections/Products'
-// import Quality  from '@/components/sections/Quality'
-// import Contact  from '@/components/sections/Contact'
+import Divisions from '@/components/sections/Divisions'
+import HowWeWork from '@/components/sections/HowWeWork'
+import ClinicianVoices from '@/components/sections/ClinicianVoices'
+import NationalReach from '@/components/sections/NationalReach'
 
 export default function Home() {
   return (
     <>
       <Hero />
       <ValuesBar/>
-      {/* <About />
-      <Products />
-      <Quality />
-      <Contact /> */}
+      <Divisions/>
+      <HowWeWork/>
+      <ClinicianVoices/>
+      <NationalReach/>
     </>
   )
 }

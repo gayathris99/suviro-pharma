@@ -1,0 +1,68 @@
+/* ═══ NATIONAL REACH ═══ */
+.national-reach {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative flower — top left of section */
+.nr-flower {
+  position: absolute;
+  left: -140px;
+  top: -120px;
+  width: 460px;
+  height: 460px;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.national-reach .container {
+  position: relative;
+  z-index: 1;
+}
+
+.nr-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.nr-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.nr-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 24px;
+}
+
+.nr-num {
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.nr-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #9ca3af;
+  margin-top: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 900px) {
+  .nr-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

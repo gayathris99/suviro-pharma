@@ -1,0 +1,82 @@
+/* ═══ HOW WE WORK ═══ */
+.how-we-work {
+  position: relative;
+  overflow: hidden;
+}
+.how-we-work .container {
+  position: relative;
+}
+
+/* Decorative flower — matches hero bottom-right */
+.hww-flower {
+  position: absolute;
+  right: -140px;
+  bottom: -120px;
+  top: auto;
+  transform: none;
+  width: 460px;
+  height: 460px;
+  opacity: 0.20;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.how-we-work .eyebrow,
+.how-we-work .section-title,
+.how-we-work .section-body,
+.hww-grid {
+  position: relative;
+  z-index: 1;
+}
+
+/* Grid */
+.hww-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 48px;
+}
+
+.hww-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 24px;
+}
+
+.hww-num {
+  font-size: 10px;
+  font-weight: 400;
+  color: #9ca3af;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  white-space: pre;
+}
+
+.hww-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.hww-desc {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 1024px) {
+  .hww-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 540px) {
+  .hww-grid {
+    grid-template-columns: 1fr;
+  }
+}
