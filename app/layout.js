@@ -2,6 +2,13 @@ import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+}
+
 export const metadata = {
   title: 'Suviro Pharma — Progress Through Science',
   description: 'Suviro Pharma manufactures bioequivalence-tested generic medicines — clinically proven, rigorously tested, accessible to every patient across India.',
