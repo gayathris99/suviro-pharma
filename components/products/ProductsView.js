@@ -127,7 +127,7 @@ export default function ProductsView({ categories, products }) {
                     <span className="product-detail-label">Composition</span>
                     <p className="product-comp">{p.composition}</p>
                   </div>
-                  <div className="product-detail">
+                  <div className="product-detail product-detail--inline">
                     <span className="product-detail-label">Dosage Form</span>
                     <span className="product-form">{p.dosage_form}</span>
                   </div>

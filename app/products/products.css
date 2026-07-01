@@ -105,8 +105,23 @@
   white-space: pre-line;
 }
 .product-form {
-  display: inline-block; font-size: 13px; color: var(--dark);
-  background: var(--bg); padding: 4px 12px; border-radius: 100px;
+  display: inline-block; font-size: 10px; color: var(--dark);
+  background: var(--bg); padding: 5px 14px; border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+/* Dosage form: label at start, pill pushed to the end */
+.product-detail--inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.product-detail--inline .product-detail-label {
+  margin-bottom: 0;
 }
 .products-empty {
   padding: 60px; text-align: center; color: var(--muted);
