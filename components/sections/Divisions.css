@@ -26,12 +26,22 @@
 }
 
 .division-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 14px;
+  /* button reset */
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: var(--font-sf);
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /* the actual card styling that was missing */
   padding: 28px 24px;
-  display: block;
-  transition: all 0.2s;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card, #fff);
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 .division-card:hover {
   background: #fff;
@@ -39,10 +49,14 @@
   transform: translateY(-2px);
 }
 
+/* The circle now centers an icon inside it */
 .division-circle {
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
 }
 

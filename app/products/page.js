@@ -1,8 +1,17 @@
-export default function Products() {
-    return (
-      <div style={{ padding: '80px 48px', textAlign: 'center', color: 'var(--muted)' }}>
-        <h1 style={{ color: 'var(--navy)', marginBottom: '12px' }}>Our Products</h1>
-        <p>Coming soon — this page is under construction.</p>
-      </div>
-    )
-  }
+import { getCategories, getProducts } from '@/lib/queries'
+import ProductsView from '@/components/products/ProductsView'
+import './products.css'
+
+export const metadata = {
+  title: 'Products — Suviro Pharmalife',
+  description: 'Explore our range of pharmaceutical formulations across neuro, nephro, cardio and gastro therapeutic divisions.',
+}
+
+export default async function ProductsPage() {
+  const [categories, products] = await Promise.all([
+    getCategories(),
+    getProducts(),
+  ])
+
+  return <ProductsView categories={categories} products={products} />
+}
