@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { getCategories, getProducts } from '@/lib/queries'
 import ProductsView from '@/components/products/ProductsView'
 import './products.css'

@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import Hero     from '@/components/sections/Hero'
 import ValuesBar from '@/components/sections/ValuesBar'
 import Divisions from '@/components/sections/Divisions'
