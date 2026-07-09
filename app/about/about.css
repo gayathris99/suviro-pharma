@@ -4,15 +4,16 @@
 /* ── Intro ── */
 .about-intro { padding-top: 48px; padding-bottom: 56px; }
 .about-title { margin-bottom: 28px; }
-.about-lead { max-width: 720px; }
+.about-lead { max-width: 900px; }
 .about-lead p {
   font-size: 17px;
-  line-height: 1.75;
+  line-height: 1.8;
   color: var(--muted);
   margin-bottom: 20px;
 }
 .about-lead p:first-child {
-  font-size: 19px;
+  font-size: 20px;
+  line-height: 1.7;
   color: var(--dark);
   font-weight: 400;
 }
