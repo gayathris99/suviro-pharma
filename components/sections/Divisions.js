@@ -14,9 +14,13 @@ export default async function Divisions() {
           <div>
             <span className="eyebrow">Therapeutic Divisions</span>
             <h2 className="section-title">
-              Four specialised branches.<br />
-              One standard of care.
+              Enhancing Lives Through<br />
+              Reliable Solutions
             </h2>
+            <p className="section-body">
+            We collaborate closely with doctors and healthcare providers, supplying the dependable products they need to improve patient outcomes and support a better quality of life.
+
+          </p>
           </div>
           <Link href="/products" className="divisions-link">
             View full product list →

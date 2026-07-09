@@ -1,10 +1,11 @@
 import './ValuesBar.css'
 
 const VALUES = [
-  { num: '01 / 04', name: 'Quality',     desc: 'Audited manufacturing, batch-tested supply.' },
-  { num: '02 / 04', name: 'Ethics',      desc: 'Transparent marketing rooted in evidence.'   },
-  { num: '03 / 04', name: 'Empathy',     desc: 'Behind every molecule, a patient.'           },
-  { num: '04 / 04', name: 'Sensibility', desc: 'Restraint, accuracy, accountability.'        },
+  { num: '01 / 05', name: 'Quality Without Compromise',     desc: 'We never cut corners when it comes to patient health.' },
+  { num: '02 / 05', name: 'Ethical Practices',      desc: 'Transparency and honesty guide every decision we make.'   },
+  { num: '03 / 05', name: 'Genuine Empathy',     desc: 'We keep the real-world experiences of patients and healthcare providers at the heart of our business.'           },
+  { num: '04 / 05', name: 'Scientific Excellence', desc: 'Every product we back is supported by rigorous research and data.'        },
+  { num: '05 / 05', name: 'Sustainable Partnerships', desc: 'We build long-term relationships that strengthen the healthcare community.'        },
 ]
 
 export default function ValuesBar() {

@@ -39,7 +39,7 @@ export default function HowWeWork() {
           molecule to prescription.
         </h2>
         <p className="section-body">
-          Every product Suviro Pharmalife Pvt. Ltd. represents passes
+          Every product at Suviro passes
           through a four-step pathway built around scientific accuracy,
           regulatory rigour and clinician trust.
         </p>

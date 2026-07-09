@@ -61,6 +61,36 @@ export default function Footer() {
 
         </div>
 
+        {/* ── Compliance row ── */}
+        <div className="footer-compliance">
+          <div className="footer-compliance-col">
+            <h4>Pharmacovigilance &amp; Patient Safety</h4>
+            <p>
+              Patient well-being is our highest priority. We maintain a dedicated
+              pharmacovigilance cell to monitor the safety and efficacy of our
+              products post-market.
+            </p>
+            <p className="footer-safety">
+              <strong>Report an Adverse Event:</strong> To report a suspected side
+              effect or quality issue, email{' '}
+              <a href="mailto:suviropharmalife@gmail.com">suviropharmalife@gmail.com</a>{' '}
+              or call{' '}
+              <a href="tel:+918142571702">+91 8142571702</a>.
+            </p>
+          </div>
+          <div className="footer-compliance-col">
+            <h4>Medical Disclaimer</h4>
+            <p>
+              The information provided on this website is for educational and
+              informational purposes only and is intended strictly for healthcare
+              professionals, distributors, and business partners. It should not be
+              used as a substitute for professional medical advice, diagnosis, or
+              treatment. Patients should always consult their physician regarding any
+              health conditions or treatment plans.
+            </p>
+          </div>
+        </div>
+
         {/* Bottom bar */}
         <div className="footer-bottom">
           <div className="footer-copy">

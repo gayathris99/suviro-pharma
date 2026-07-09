@@ -9,11 +9,11 @@
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .value-item {
-  padding: 28px 32px;
+  padding: 28px 24px;
   border-right: 1px solid var(--border);
 }
 .value-item:last-child {
@@ -29,11 +29,13 @@
 }
 
 .value-name {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--dark);
   margin-bottom: 8px;
   letter-spacing: -0.02em;
+  line-height: 1.25;
+  min-height: 2.5em;   /* reserve room for two lines so descriptions align */
 }
 
 .value-desc {
@@ -44,18 +46,48 @@
 }
 
 /* ═══ RESPONSIVE ═══ */
-@media (max-width: 900px) {
+
+/* Tablet: 5 doesn't divide evenly, so go to a comfortable 3-per-row.
+   Reset all right borders, then re-apply only where they make sense. */
+@media (max-width: 1000px) {
+  .values-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .value-item {
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  /* remove right border on the last column (every 3rd item) */
+  .value-item:nth-child(3n) {
+    border-right: none;
+  }
+  /* remove bottom border from the last row (items 4 and 5 here) */
+  .value-item:nth-child(4),
+  .value-item:nth-child(5) {
+    border-bottom: none;
+  }
+}
+
+/* Small tablet / large phone: 2 per row */
+@media (max-width: 720px) {
   .values-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .value-item:nth-child(2) {
-    border-right: none;
-  }
-  .value-item:nth-child(1),
-  .value-item:nth-child(2) {
+  .value-item {
+    border-right: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
   }
+  /* right border only on the left column (odd items) */
+  .value-item:nth-child(even) {
+    border-right: none;
+  }
+  /* last item (5th, odd → sits alone on final row) keeps no bottom border */
+  .value-item:last-child {
+    border-bottom: none;
+  }
 }
+
+/* Phone: single column */
 @media (max-width: 480px) {
   .values-grid {
     grid-template-columns: 1fr;
@@ -67,5 +99,8 @@
   }
   .value-item:last-child {
     border-bottom: none;
+  }
+  .value-name {
+    min-height: 0;   /* no alignment needed when stacked */
   }
 }

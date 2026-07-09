@@ -31,17 +31,16 @@ export default function Hero() {
 
         {/* Left — text */}
         <div className="hero-text">
-          <p className="hero-eyebrow">Progress Through Science</p>
+          <p className="hero-eyebrow">Your Trusted Pharmaceutical Marketing Partner</p>
           <h1 className="hero-headline">
-            Marketing healthcare with{' '}
-            <span className="hero-accent">precision</span> and human{' '}
-            <span className="hero-accent">empathy.</span>
+            Delivering{' '}
+            <span className="hero-accent">Quality Healthcare</span> with{' '}
+            <span className="hero-accent">Integrity.</span>
           </h1>
           <p className="hero-body">
-            Suviro procures premium pharmaceutical formulations from
-            trusted manufacturers and brings them to clinicians across
-            four specialised therapeutic divisions — engineered for
-            quality, delivered with care.
+          At Suviro, we are a pharmaceutical marketing company built on trust, ethics, and science —
+          delivering dependable therapeutic solutions across Neurology, Nephrology,
+          Cardiology, and Gastroenterology.
           </p>
           <div className="hero-buttons">
             <Link href="/products" className="hero-btn hero-btn--fill">
