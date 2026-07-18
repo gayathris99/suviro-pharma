@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import CategoryIcon from '@/components/ui/CategoryIcon'
-import ProductImage from './ProductImage'
+import { optimizeCloudinary } from '@/lib/cloudinaryUrl'
 
 const TINTS = {
   '#7c3aed': '#f3e8ff', '#6366f1': '#e0e7ff', '#2563eb': '#dbeafe',
@@ -18,21 +18,15 @@ export default function ProductsView({ categories, products }) {
   const [selectedCat, setSelectedCat] = useState('all')
   const [search, setSearch] = useState('')
 
-  // On mount: if the homepage set a category in sessionStorage,
-  // preselect it, then clear it (so a fresh visit shows "All").
   useEffect(() => {
     const stored = sessionStorage.getItem('suviro_category')
     if (stored) {
       const id = parseInt(stored)
-      // only apply if that category actually exists
-      if (categories.some((c) => c.id === id)) {
-        setSelectedCat(id)
-      }
+      if (categories.some((c) => c.id === id)) setSelectedCat(id)
       sessionStorage.removeItem('suviro_category')
     }
   }, [categories])
 
-  // Filter by category + search together (AND)
   const filtered = products.filter((p) => {
     const matchesCat = selectedCat === 'all' || p.category_id === selectedCat
     const q = search.trim().toLowerCase()
@@ -49,7 +43,6 @@ export default function ProductsView({ categories, products }) {
     <section className="section products-page">
       <div className="container">
 
-        {/* Header */}
         <div className="products-head">
           <span className="eyebrow">Our Products</span>
           <h1 className="section-title">Formulations across every division.</h1>
@@ -58,7 +51,6 @@ export default function ProductsView({ categories, products }) {
           </p>
         </div>
 
-        {/* Toolbar: category dropdown + search */}
         <div className="products-toolbar">
           <div className="cat-select-wrap">
             <select
@@ -88,7 +80,6 @@ export default function ProductsView({ categories, products }) {
           </div>
         </div>
 
-        {/* Result count / active filter */}
         <div className="products-meta">
           {activeCat && (
             <span className="active-chip" style={{ background: tintFor(activeCat.color), color: activeCat.color }}>
@@ -101,7 +92,6 @@ export default function ProductsView({ categories, products }) {
           </span>
         </div>
 
-        {/* Product grid */}
         {filtered.length === 0 ? (
           <div className="products-empty">
             No products found. Try a different category or search term.
@@ -110,11 +100,12 @@ export default function ProductsView({ categories, products }) {
           <div className="products-grid">
             {filtered.map((p) => (
               <article key={p.id} className="product-card">
-                <ProductImage
-                  images={[p.image_url, p.image_url_2]}
-                  alt={p.brand_name}
-                />
-                <div className="product-body">
+                <div className="product-photo">
+                  {p.image_url
+                    ? <img src={optimizeCloudinary(p.image_url, 800)} alt={p.brand_name} />
+                    : <div className="product-photo-ph" />}
+                </div>
+                <div className="product-card-body">
                   {p.category_name && (
                     <span className="product-cat" style={{ background: tintFor(p.category_color), color: p.category_color }}>
                       {p.category_name}
@@ -122,12 +113,15 @@ export default function ProductsView({ categories, products }) {
                   )}
                   <h3 className="product-brand">{p.brand_name}</h3>
                   <p className="product-drug">{p.drug_name}</p>
+
                   <div className="product-divider" />
+
                   <div className="product-detail">
                     <span className="product-detail-label">Composition</span>
                     <p className="product-comp">{p.composition}</p>
                   </div>
-                  <div className="product-detail product-detail--inline">
+
+                  <div className="product-detail--inline">
                     <span className="product-detail-label">Dosage Form</span>
                     <span className="product-form">{p.dosage_form}</span>
                   </div>
