@@ -77,7 +77,7 @@ export default function Hero() {
             <span className="hero-badge-dot" />
             <div>
               <div className="hero-badge-main">Trusted by clinicians</div>
-              <div className="hero-badge-sub">Across 12+ states</div>
+              <div className="hero-badge-sub">Across India</div>
             </div>
           </div>
         </div>

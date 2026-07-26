@@ -6,8 +6,7 @@ const NAV_LINKS = [
   { label: 'Home',        href: '/'            },
   { label: 'About',       href: '/about'       },
   { label: 'Products',    href: '/products'    },
-  { label: 'Visual Aids', href: '/visual-aids' },
-  { label: 'Contact',     href: '/contact'     },
+  { label: 'Careers',     href: '/careers'     },
 ]
 
 const REACH = [
