@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
+    "cloudinary": "^2.10.0",
     "healthicons-react": "^3.5.0",
     "next": "15.3.8",
     "nodemailer": "^8.0.10",
