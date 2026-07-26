@@ -62,7 +62,7 @@ export async function POST(request) {
 
     // ── Upload resume to Cloudinary (raw, signed) ──
     const buffer = Buffer.from(await resume.arrayBuffer())
-    const uploaded = await uploadCv(buffer)
+    const uploaded = await uploadCv(buffer, resume.name || 'resume.pdf')
 
     // ── Save application ──
     await sql`
@@ -77,41 +77,72 @@ export async function POST(request) {
       )
     `
 
-    // ── Email HR ──
+    // ── Email notifications ──
+    // The application is already saved at this point — an email hiccup
+    // (e.g. a transient SMTP or attachment-fetch failure) must not make
+    // a successful submission look like a failure to the applicant. The
+    // two emails are also independent of each other: a failure fetching
+    // the CV attachment for the HR email shouldn't block the applicant's
+    // plain-text auto-reply from sending.
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_APP_PASSWORD },
     })
 
-    await transporter.sendMail({
-      from: `"Suviro Pharma Careers" <${process.env.GMAIL_USER}>`,
-      to: process.env.CAREERS_RECEIVER_EMAIL,
-      subject: `New Application — ${job.role_name}`,
-      html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #2E3192;">New Application for ${job.role_name}</h2>
-          <table style="width:100%; border-collapse: collapse; margin-top: 16px;">
-            <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600; width: 160px;">Name</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${firstName} ${lastName}</td></tr>
-            <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Email</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${email}</td></tr>
-            <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Phone</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${phone}</td></tr>
-            <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Address</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${address}</td></tr>
-            <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Gender</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${gender}</td></tr>
-            <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Experience</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${experienceYears}</td></tr>
-            <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Current CTC</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${currentCtc}</td></tr>
-            <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Expected CTC</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${expectedCtc}</td></tr>
-            <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Notice Period</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${noticePeriod}</td></tr>
-            ${comments ? `<tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Comments</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${comments}</td></tr>` : ''}
-            <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Resume</td><td style="padding: 10px;"><a href="${uploaded.secure_url}">View / Download CV</a></td></tr>
-          </table>
-          <p style="color: #888; font-size: 12px; margin-top: 24px;">
-            Sent from suviropharma.com careers page
-          </p>
-        </div>
-      `,
-      attachments: [
-        { filename: resume.name || 'resume', path: uploaded.secure_url },
-      ],
-    })
+    try {
+      await transporter.sendMail({
+        from: `"Suviro Pharma Careers" <${process.env.GMAIL_USER}>`,
+        to: process.env.CAREERS_RECEIVER_EMAIL,
+        subject: `New Application — ${job.role_name}`,
+        html: `
+          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #2E3192;">New Application for ${job.role_name}</h2>
+            <table style="width:100%; border-collapse: collapse; margin-top: 16px;">
+              <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600; width: 160px;">Name</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${firstName} ${lastName}</td></tr>
+              <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Email</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${email}</td></tr>
+              <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Phone</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${phone}</td></tr>
+              <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Address</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${address}</td></tr>
+              <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Gender</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${gender}</td></tr>
+              <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Experience</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${experienceYears}</td></tr>
+              <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Current CTC</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${currentCtc}</td></tr>
+              <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Expected CTC</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${expectedCtc}</td></tr>
+              <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Notice Period</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${noticePeriod}</td></tr>
+              ${comments ? `<tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Comments</td><td style="padding: 10px; border-bottom: 1px solid #eee;">${comments}</td></tr>` : ''}
+              <tr><td style="padding: 10px; background: #f5f5f5; font-weight: 600;">Resume</td><td style="padding: 10px;"><a href="${uploaded.secure_url}">View / Download CV</a></td></tr>
+            </table>
+            <p style="color: #888; font-size: 12px; margin-top: 24px;">
+              Sent from suviropharma.com careers page
+            </p>
+          </div>
+        `,
+        attachments: [
+          { filename: resume.name || 'resume', path: uploaded.secure_url },
+        ],
+      })
+    } catch (emailError) {
+      console.error('Apply form: application saved but HR email failed:', emailError)
+    }
+
+    try {
+      // ── Auto-reply to applicant ──
+      await transporter.sendMail({
+        from: `"Suviro Pharma Careers" <${process.env.GMAIL_USER}>`,
+        to: email,
+        subject: `We've received your application — ${job.role_name}`,
+        html: `
+          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #2E3192;">Thank you, ${firstName}!</h2>
+            <p>We've received your application for <strong>${job.role_name}</strong> and our team will review it shortly. If your profile is a match, we'll reach out to you directly.</p>
+            <p style="margin-top: 24px; color: #888; font-size: 13px;">
+              — Team Suviro Pharma<br/>
+              suviropharmalife@gmail.com
+            </p>
+          </div>
+        `,
+      })
+    } catch (emailError) {
+      console.error('Apply form: application saved but applicant auto-reply failed:', emailError)
+    }
 
     return Response.json({ success: true })
   } catch (error) {
