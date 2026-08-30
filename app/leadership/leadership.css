@@ -1,0 +1,71 @@
+/* ═══ LEADERSHIP PAGE ═══ */
+.leadership-page .section { padding-top: 48px; padding-bottom: 80px; }
+
+.lead-head { max-width: 720px; margin-bottom: 44px; }
+
+.lead-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* Photo column */
+.lead-photo-col { position: sticky; top: 100px; }
+.lead-photo {
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--bg, #f5f6f8);
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 50px rgba(11, 30, 60, 0.10);
+}
+.lead-photo img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+.lead-signature { margin-top: 22px; padding-left: 2px; }
+.lead-sign-name {
+  font-size: 18px; font-weight: 700; color: var(--dark); letter-spacing: -0.01em;
+}
+.lead-sign-role {
+  font-size: 14px; color: var(--accent); font-weight: 500; margin-top: 3px;
+}
+.lead-sign-company {
+  font-size: 13px; color: var(--muted); margin-top: 2px;
+}
+
+/* Message column */
+.lead-message { max-width: 720px; }
+.lead-message p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.lead-message p:first-child {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--dark);
+  font-weight: 400;
+}
+.lead-tagline {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: var(--accent) !important;
+  letter-spacing: -0.01em;
+  margin-top: 28px !important;
+  margin-bottom: 0 !important;
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 860px) {
+  .lead-grid { grid-template-columns: 1fr; gap: 36px; }
+  .lead-photo-col { position: static; max-width: 320px; }
+  .lead-message p:first-child { font-size: 17px; }
+}
+@media (max-width: 480px) {
+  .lead-photo-col { max-width: 100%; }
+  .lead-message p { font-size: 15px; }
+}
