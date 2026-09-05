@@ -102,14 +102,15 @@
   
   /* ═══ RESPONSIVE ═══ */
   @media (max-width: 860px) {
-    .lead-hero { padding-top: 48px; }
-    .lead-hero-grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 36px; }
+    .lead-hero { padding: 44px 0 0; }
+    .lead-hero-grid { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
     .lead-hero-visual { order: -1; }               /* portrait on top */
     .lead-photo { max-width: 220px; }
+    .lead-quote-mark { margin-top: 20px; font-size: 54px; }
     /* pillars: 3 → stacked */
     .lead-pillars { grid-template-columns: 1fr; }
     .lead-pillar {
-      padding: 18px 0 !important;
+      padding: 16px 0 !important;
       border-right: none !important;
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       padding-left: 0 !important;
@@ -117,7 +118,15 @@
     .lead-pillar:last-child { border-bottom: none; }
   }
   @media (max-width: 480px) {
-    .lead-photo { max-width: 190px; }
-    .lead-message p { font-size: 15px; }
+    .lead-hero { padding-top: 36px; }
+    .lead-hero .container { padding-left: 20px; padding-right: 20px; }
+    .lead-hero-grid { gap: 24px; padding-bottom: 26px; }
+    .lead-photo { max-width: 180px; }
+    .lead-quote-mark { font-size: 46px; margin-top: 16px; }
+    .lead-quote { font-size: 20px; }
+    .lead-sign-name { font-size: 17px; margin-top: 18px; }
+    .lead-message-section { padding-top: 44px; padding-bottom: 56px; }
+    .lead-message p { font-size: 15px; line-height: 1.75; }
     .lead-message p:first-child { font-size: 16px; }
+    .lead-tagline { font-size: 18px !important; margin-top: 22px !important; }
   }
