@@ -20,10 +20,10 @@ export default function Hero() {
 
       {/* ── Background petal flowers ── */}
       <div className="hero-bg-flower hero-bg-flower--left">
-        <Flower size={620} atom={false} opacity={0.6} spin spinDuration={90} reverse />
+        <Flower size={620} opacity={0.6} />
       </div>
       <div className="hero-bg-flower hero-bg-flower--right">
-        <Flower size={460} atom={false} opacity={0.6} spin spinDuration={70} />
+        <Flower size={460} opacity={0.6} />
       </div>
 
       {/* ── Content ── */}
@@ -73,7 +73,7 @@ export default function Hero() {
             />
           </div>
           <div className="hero-badge">
-            <Flower size={38} spin spinDuration={30} />
+            <Flower size={38} />
             <span className="hero-badge-dot" />
             <div>
               <div className="hero-badge-main">Trusted by clinicians</div>

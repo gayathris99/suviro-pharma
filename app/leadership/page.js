@@ -2,14 +2,8 @@ import './leadership.css'
 
 export const metadata = {
   title: 'Leadership — Suviro Pharmalife',
-  description: 'A message from Dr. Rohith Reddy, Founder & Chairman of Suviro Pharmalife — leading with purpose, delivering trust, and an unwavering commitment to quality healthcare.',
+  description: 'Messages from the leadership of Suviro Pharmalife — Dr. Rohith Reddy, Founder & Chairman, and Krishna Chaitanya GVNS, Managing Director — on trust, purpose, and quality healthcare.',
 }
-
-const PILLARS = [
-  { icon: 'shield', title: 'Integrity', desc: 'The right thing, always.' },
-  { icon: 'handshake', title: 'Partnerships', desc: 'Stronger together.' },
-  { icon: 'award', title: 'Quality', desc: 'Uncompromising standards.' },
-]
 
 function PillarIcon({ name }) {
   const c = { width: 22, height: 22, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' }
@@ -18,95 +12,98 @@ function PillarIcon({ name }) {
   return (<svg {...c}><circle cx="12" cy="9" r="6" /><path d="m9 14-2 7 5-3 5 3-2-7" /></svg>)
 }
 
+const LEADERS = [
+  {
+    key: 'chairman',
+    eyebrow: 'Message from the Founder & Chairman',
+    headlineA: 'Progress rooted in',
+    headlineAccent: 'trust.',
+    intro: 'At Suviro Pharmalife, we believe that meaningful progress in healthcare begins with trust, responsibility, and an unwavering commitment to quality — building an organization distinguished by the integrity with which we build every relationship.',
+    pillars: [
+      { icon: 'shield', title: 'Responsibility', desc: 'A duty of care to those who trust us.' },
+      { icon: 'handshake', title: 'Scientific Thinking', desc: 'Decisions grounded in evidence and rigor.' },
+      { icon: 'award', title: 'Enduring Growth', desc: 'Built on relationships, not just milestones.' },
+    ],
+    name: 'Dr. Rohith Reddy',
+    role: 'Founder & Chairman',
+    company: 'Suviro Pharmalife Pvt. Ltd.',
+    photo: '/founder.jpeg',
+  },
+  {
+    key: 'md',
+    eyebrow: 'Message from the Managing Director',
+    headlineA: 'Leading with purpose.',
+    headlineAccent: 'Delivering trust.',
+    intro: 'At Suviro Pharmalife, our commitment goes beyond business. We are dedicated to building ethical partnerships, delivering quality healthcare solutions, and creating a healthier future for all.',
+    pillars: [
+      { icon: 'shield', title: 'Integrity', desc: 'We do the right thing, always.' },
+      { icon: 'handshake', title: 'Partnership', desc: 'Stronger together, for a better tomorrow.' },
+      { icon: 'award', title: 'Excellence', desc: 'Committed to quality in everything we do.' },
+    ],
+    name: 'Krishna Chaitanya GVNS',
+    role: 'Managing Director',
+    company: 'Suviro Pharmalife Private Limited',
+    photo: '/md.jpeg',
+  },
+]
+
 export default function Leadership() {
   return (
     <div className="leadership-page">
 
-      {/* ── Navy hero — quote-led ── */}
-      <section className="lead-hero">
-        <div className="lead-hero-glow" />
-        <div className="container lead-hero-inner">
+      {/* Page intro */}
+      <section className="section lead-page-head">
+        <div className="container">
+          <span className="eyebrow">Leadership</span>
+          <h1 className="section-title">Guided by purpose and principle.</h1>
+        </div>
+      </section>
 
-          <div className="lead-hero-grid">
-            {/* Quote + signature */}
-            <div className="lead-hero-text">
-              <span className="lead-eyebrow">Message from the Founder &amp; Chairman</span>
-              <div className="lead-quote-mark">&ldquo;</div>
-              <blockquote className="lead-quote">
-                Meaningful progress in healthcare begins with trust, responsibility, and
-                an unwavering commitment to <span className="lead-accent">quality.</span>
-              </blockquote>
-              <div className="lead-sign-name">Dr. Rohith Reddy</div>
-              <div className="lead-sign-meta">Founder &amp; Chairman · Suviro Pharmalife Pvt. Ltd.</div>
-            </div>
+      {LEADERS.map((L, i) => (
+        <section key={L.key} className={`section leader-block ${i % 2 === 1 ? 'leader-block--alt' : ''}`}>
+          <div className="container">
+            <div className="leader-grid">
 
-            {/* Portrait */}
-            <div className="lead-hero-visual">
-              <div className="lead-photo">
-                <img src="/founder.jpeg" alt="Dr. Rohith Reddy, Founder & Chairman of Suviro Pharmalife" />
-              </div>
-            </div>
-          </div>
+              {/* Text */}
+              <div className="leader-text">
+                <span className="leader-eyebrow">{L.eyebrow}</span>
+                <span className="leader-rule" />
+                <h2 className="leader-headline">
+                  {L.headlineA}<br />
+                  <span className="leader-accent">{L.headlineAccent}</span>
+                </h2>
+                <p className="leader-intro">{L.intro}</p>
 
-          {/* Pillars strip */}
-          <div className="lead-pillars">
-            {PILLARS.map((p) => (
-              <div key={p.title} className="lead-pillar">
-                <div className="lead-pillar-icon"><PillarIcon name={p.icon} /></div>
-                <div>
-                  <div className="lead-pillar-title">{p.title}</div>
-                  <div className="lead-pillar-desc">{p.desc}</div>
+                <div className="leader-pillars">
+                  {L.pillars.map((p) => (
+                    <div key={p.title} className="leader-pillar">
+                      <div className="leader-pillar-icon"><PillarIcon name={p.icon} /></div>
+                      <div>
+                        <div className="leader-pillar-title">{p.title}</div>
+                        <div className="leader-pillar-desc">{p.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="leader-signature">
+                  <div className="leader-sign-name">{L.name}</div>
+                  <div className="leader-sign-role">{L.role}</div>
+                  <div className="leader-sign-company">{L.company}</div>
                 </div>
               </div>
-            ))}
-          </div>
 
-        </div>
-      </section>
+              {/* Portrait */}
+              <div className="leader-visual">
+                <div className="leader-photo">
+                  <img src={L.photo} alt={`${L.name}, ${L.role} of Suviro Pharmalife`} />
+                </div>
+              </div>
 
-      {/* ── Full message ── */}
-      <section className="section lead-message-section">
-        <div className="container">
-          <div className="lead-message">
-            <p>
-              At Suviro Pharmalife, we believe that meaningful progress in healthcare
-              begins with trust, responsibility, and an unwavering commitment to quality.
-            </p>
-            <p>
-              Our purpose is to build a pharmaceutical organization distinguished not
-              merely by the products we bring to market, but by the integrity with which
-              we build every relationship. In collaboration with trusted and capable
-              manufacturing partners, we strive to make quality healthcare solutions
-              accessible while maintaining uncompromising standards of professionalism,
-              consistency, and ethical conduct.
-            </p>
-            <p>
-              We recognize that in healthcare, credibility is earned over time. Every
-              interaction with a healthcare professional, distributor, customer, or
-              business partner is an opportunity to demonstrate our commitment to
-              reliability, transparency, and excellence. These principles guide our
-              decisions and shape the way we conduct our business.
-            </p>
-            <p>
-              Our journey is defined by the confidence entrusted to us by the healthcare
-              community. Every milestone is not simply a measure of growth, but a
-              reflection of the relationships we have built and the responsibility we
-              carry towards those who place their trust in Suviro.
-            </p>
-            <p>
-              As we look ahead, our ambition is clear — to build a respected
-              pharmaceutical organization founded on quality, integrity, scientific
-              thinking, and enduring partnerships.
-            </p>
-            <p>
-              We will continue to move forward with humility, purpose, and conviction,
-              creating value for our partners and contributing meaningfully to better
-              healthcare.
-            </p>
-            <p className="lead-tagline">Progress through Science.</p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
     </div>
   )

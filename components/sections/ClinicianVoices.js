@@ -42,7 +42,7 @@ export default function ClinicianVoices() {
           {/* Right — quote grid */}
           <div className="cv-right">
             <div className="cv-flower" aria-hidden="true">
-              <Flower size={300} atom={false} opacity={0.6} spin spinDuration={70} reverse />
+              <Flower size={300} opacity={0.6} />
             </div>
             <div className="cv-grid">
               {QUOTES.map((q, i) => (

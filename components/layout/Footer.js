@@ -26,7 +26,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer-brand">
             <div className="footer-logo">
-              <Flower size={42} spin spinDuration={30} />
+              <Flower size={42} />
               <div>
                 <div className="footer-name">Suviro</div>
                 <div className="footer-sub">Progress Through Science</div>
@@ -63,21 +63,6 @@ export default function Footer() {
 
         {/* ── Compliance row ── */}
         <div className="footer-compliance">
-          <div className="footer-compliance-col">
-            <h4>Pharmacovigilance &amp; Patient Safety</h4>
-            <p>
-              Patient well-being is our highest priority. We maintain a dedicated
-              pharmacovigilance cell to monitor the safety and efficacy of our
-              products post-market.
-            </p>
-            <p className="footer-safety">
-              <strong>Report an Adverse Event:</strong> To report a suspected side
-              effect or quality issue, email{' '}
-              <a href="mailto:suviropharmalife@gmail.com">suviropharmalife@gmail.com</a>{' '}
-              or call{' '}
-              <a href="tel:+918142571702">+91 8142571702</a>.
-            </p>
-          </div>
           <div className="footer-compliance-col">
             <h4>Medical Disclaimer</h4>
             <p>

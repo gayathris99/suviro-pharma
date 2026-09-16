@@ -1,132 +1,100 @@
-/* ═══ LEADERSHIP — Navy hero, quote-led (A+B blend) ═══ */
+/* ═══ LEADERSHIP PAGE — alternating layout ═══ */
 
-.lead-hero {
-    position: relative;
-    background: var(--dark, #0b1e3c);
-    overflow: hidden;
-    padding: 64px 0 0;
+.lead-page-head { padding-top: 48px; padding-bottom: 8px; }
+.lead-page-head .section-title { margin-top: 12px; }
+
+/* Each leader block */
+.leader-block { padding-top: 48px; padding-bottom: 48px; }
+.leader-block--alt { background: var(--bg, #f5f6f8); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+.leader-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 56px;
+  align-items: center;
+}
+/* Alternate block: photo on the LEFT (fixed), text on the RIGHT (fluid),
+   with a larger gap so they sit toward the outer edges with space between */
+.leader-block--alt .leader-grid {
+  grid-template-columns: 340px 1fr;
+  gap: 80px;
+}
+.leader-block--alt .leader-visual { order: -1; justify-content: flex-start; }
+.leader-block--alt .leader-text { order: 0; }
+/* Text always left-aligned in both blocks */
+.leader-text { text-align: left; }
+
+/* Text */
+.leader-eyebrow {
+  display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--accent);
+}
+.leader-rule {
+  display: block; width: 38px; height: 3px; background: var(--accent);
+  border-radius: 2px; margin: 12px 0 22px;
+}
+.leader-headline {
+  font-size: clamp(26px, 3.6vw, 38px); font-weight: 700; line-height: 1.14;
+  letter-spacing: -0.02em; color: var(--dark);
+}
+.leader-accent { color: var(--accent); }
+.leader-intro {
+  font-size: 15px; line-height: 1.75; color: var(--muted);
+  margin: 20px 0 28px; max-width: 520px;
+}
+.leader-block--alt .leader-intro { max-width: none; }
+
+/* Pillars */
+.leader-pillars { display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px; }
+.leader-pillar { display: flex; gap: 14px; align-items: flex-start; }
+.leader-pillar-icon {
+  width: 44px; height: 44px; border-radius: 12px; background: #eef2ff;
+  color: var(--accent); display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.leader-block--alt .leader-pillar-icon { background: #fff; }
+.leader-pillar-title { font-size: 15px; font-weight: 600; color: var(--dark); letter-spacing: -0.01em; }
+.leader-pillar-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+
+/* Signature */
+.leader-signature { padding-top: 22px; border-top: 1px solid var(--border); }
+.leader-sign-name {
+  font-family: Georgia, 'Times New Roman', serif; font-style: italic;
+  font-size: 19px; color: var(--dark);
+}
+.leader-sign-role { font-size: 13px; font-weight: 600; color: var(--accent); margin-top: 4px; }
+.leader-sign-company { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+/* Portrait — identical in both blocks */
+.leader-visual { display: flex; align-items: center; justify-content: center; }
+.leader-photo {
+  width: 340px; max-width: 100%;
+  aspect-ratio: 4 / 5; border-radius: 18px;
+  overflow: hidden; background: #fff; border: 1px solid var(--border);
+  box-shadow: 0 20px 50px rgba(11, 30, 60, 0.12);
+}
+.leader-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 860px) {
+  .leader-grid,
+  .leader-block--alt .leader-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
-  .lead-hero-glow {
-    position: absolute;
-    top: -120px; right: -90px;
-    width: 360px; height: 360px;
-    border-radius: 50%;
-    background: rgba(99, 102, 241, 0.18);
-    filter: blur(20px);
-    pointer-events: none;
+  /* On mobile BOTH blocks show photo on top */
+  .leader-visual,
+  .leader-block--alt .leader-visual {
+    order: -1 !important;
+    justify-content: center !important;
   }
-  .lead-hero-inner { position: relative; z-index: 1; }
-  
-  .lead-hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 48px;
-    align-items: center;
-    padding-bottom: 44px;
-  }
-  
-  /* Quote */
-  .lead-eyebrow {
-    display: block;
-    font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
-    text-transform: uppercase; color: #a5b4fc;
-  }
-  .lead-quote-mark {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 64px; line-height: 0.5; color: var(--accent);
-    margin: 28px 0 0;
-  }
-  .lead-quote {
-    font-size: clamp(22px, 3vw, 28px);
-    font-weight: 600; line-height: 1.35; letter-spacing: -0.01em;
-    color: #fff; margin: 6px 0 0; border: 0; padding: 0;
-  }
-  .lead-accent { color: #a5b4fc; }
-  .lead-sign-name {
-    font-family: Georgia, 'Times New Roman', serif; font-style: italic;
-    font-size: 19px; color: #fff; margin-top: 24px;
-  }
-  .lead-sign-meta { font-size: 12.5px; color: #a5b4fc; margin-top: 3px; }
-  
-  /* Portrait */
-  .lead-hero-visual { display: flex; align-items: center; justify-content: center; }
-  .lead-photo {
-    width: 100%; max-width: 280px;
-    aspect-ratio: 4 / 5;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #fff;
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-  }
-  .lead-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  
-  /* Pillars strip */
-  .lead-pillars {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-  }
-  .lead-pillar {
-    display: flex; gap: 13px; align-items: center;
-    padding: 24px 8px 26px 0;
-  }
-  .lead-pillar:not(:last-child) {
-    border-right: 1px solid rgba(255, 255, 255, 0.12);
-    padding-right: 24px;
-  }
-  .lead-pillar:not(:first-child) { padding-left: 28px; }
-  .lead-pillar-icon {
-    width: 44px; height: 44px; border-radius: 12px;
-    background: rgba(255, 255, 255, 0.08); color: #a5b4fc;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .lead-pillar-title { font-size: 14px; font-weight: 600; color: #fff; }
-  .lead-pillar-desc { font-size: 12px; color: rgba(255, 255, 255, 0.55); margin-top: 2px; }
-  
-  /* ── Full message ── */
-  .lead-message-section { padding-top: 64px; padding-bottom: 80px; }
-  .lead-message { max-width: 760px; }
-  .lead-message p {
-    font-size: 16px; line-height: 1.85; color: var(--muted); margin-bottom: 20px;
-  }
-  .lead-message p:first-child {
-    font-size: 19px; line-height: 1.7; color: var(--dark); font-weight: 400;
-  }
-  .lead-tagline {
-    font-size: 20px !important; font-weight: 600 !important;
-    color: var(--accent) !important; letter-spacing: -0.01em;
-    margin-top: 28px !important; margin-bottom: 0 !important;
-  }
-  
-  /* ═══ RESPONSIVE ═══ */
-  @media (max-width: 860px) {
-    .lead-hero { padding: 44px 0 0; }
-    .lead-hero-grid { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
-    .lead-hero-visual { order: -1; }               /* portrait on top */
-    .lead-photo { max-width: 220px; }
-    .lead-quote-mark { margin-top: 20px; font-size: 54px; }
-    /* pillars: 3 → stacked */
-    .lead-pillars { grid-template-columns: 1fr; }
-    .lead-pillar {
-      padding: 16px 0 !important;
-      border-right: none !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      padding-left: 0 !important;
-    }
-    .lead-pillar:last-child { border-bottom: none; }
-  }
-  @media (max-width: 480px) {
-    .lead-hero { padding-top: 36px; }
-    .lead-hero .container { padding-left: 20px; padding-right: 20px; }
-    .lead-hero-grid { gap: 24px; padding-bottom: 26px; }
-    .lead-photo { max-width: 180px; }
-    .lead-quote-mark { font-size: 46px; margin-top: 16px; }
-    .lead-quote { font-size: 20px; }
-    .lead-sign-name { font-size: 17px; margin-top: 18px; }
-    .lead-message-section { padding-top: 44px; padding-bottom: 56px; }
-    .lead-message p { font-size: 15px; line-height: 1.75; }
-    .lead-message p:first-child { font-size: 16px; }
-    .lead-tagline { font-size: 18px !important; margin-top: 22px !important; }
-  }
+  .leader-photo { width: 240px; max-width: 100%; }
+  .leader-intro,
+  .leader-block--alt .leader-intro { max-width: none; }
+}
+@media (max-width: 480px) {
+  .leader-block { padding-top: 40px; padding-bottom: 40px; }
+  .leader-photo { width: 200px; }
+  .leader-headline { font-size: clamp(23px, 7vw, 30px); }
+  .lead-page-head { padding-top: 36px; }
+}

@@ -13,7 +13,7 @@ export default function NationalReach() {
     <section className="section section--bg national-reach">
       {/* Decorative rotating flower — top left of section */}
       <div className="nr-flower" aria-hidden="true">
-        <Flower size={460} atom={false} opacity={0.6} spin spinDuration={75} reverse />
+        <Flower size={460} opacity={0.6} />
       </div>
       <div className="container">
         <div className="nr-layout">

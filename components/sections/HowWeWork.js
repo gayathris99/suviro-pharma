@@ -29,7 +29,7 @@ export default function HowWeWork() {
     <section className="section section--bg how-we-work">
       {/* Decorative rotating flower — bottom right of section */}
       <div className="hww-flower" aria-hidden="true">
-        <Flower size={460} atom={false} opacity={0.6} spin spinDuration={70} />
+        <Flower size={460} opacity={0.6} />
       </div>
       <div className="container">
 

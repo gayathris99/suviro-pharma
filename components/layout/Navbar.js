@@ -9,7 +9,7 @@ const SEGMENTS = [
   { label: 'Neuro',  color: 'var(--neuro)'  },
   { label: 'Nephro', color: 'var(--nephro)' },
   { label: 'Cardio', color: 'var(--cardio)' },
-  { label: 'Gastro', color: 'var(--gastro)' },
+  { label: 'Diabetic', color: 'var(--diabetic)' },
 ]
 
 const NAV_LINKS = [
@@ -56,7 +56,7 @@ export default function Navbar() {
           <Link href="/" className="navbar-logo">
             <Flower size={52} spin spinDuration={30} />
             <span className="navbar-logo-text">
-              <span className="navbar-logo-name">Suviro Pharmalife</span>
+              <span className="navbar-logo-name">Suviro Pharmalife Pvt. Ltd.</span>
               <span className="navbar-logo-sub">Progress Through Science</span>
             </span>
           </Link>
