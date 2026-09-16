@@ -8,15 +8,15 @@ const QUOTES = [
   },
   {
     quote: 'Their team speaks the language of evidence. No exaggeration, no theatre — only the data.',
-    role: 'Senior Neurologist · Pune',
+    role: 'Senior Neurologist · Anantapur',
   },
   {
     quote: "Suviro's diabetic line has become a dependable part of our outpatient protocols.",
-    role: 'Diabetologist · Bengaluru',
+    role: 'Diabetologist · Kurnool',
   },
   {
     quote: 'Cardio formulations arrive properly stored, properly labelled, properly explained. Rare combination.',
-    role: 'Interventional Cardiologist · Mumbai',
+    role: 'Interventional Cardiologist · Anantapur',
   },
 ]
 

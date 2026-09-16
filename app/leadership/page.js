@@ -34,7 +34,7 @@ const LEADERS = [
     eyebrow: 'Message from the Managing Director',
     headlineA: 'Leading with purpose.',
     headlineAccent: 'Delivering trust.',
-    intro: 'At Suviro Pharmalife, our commitment goes beyond business. We are dedicated to building ethical partnerships, delivering quality healthcare solutions, and creating a healthier future for all.',
+    intro: 'With over 16 years of experience in the pharmaceutical industry, my commitment at Suviro Pharmalife goes beyond business. We are dedicated to building ethical partnerships, delivering quality healthcare solutions, and creating a healthier future for all.',
     pillars: [
       { icon: 'shield', title: 'Integrity', desc: 'We do the right thing, always.' },
       { icon: 'handshake', title: 'Partnership', desc: 'Stronger together, for a better tomorrow.' },
