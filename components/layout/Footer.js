@@ -34,7 +34,7 @@ export default function Footer() {
             </div>
             <p className="footer-desc">
               A pharmaceutical marketing company committed to quality,
-              ethics and empathy across Neuro, Nephro, Cardio and Gastro
+              ethics and empathy across Neuro, Nephro, Cardio and Diabetic
               therapeutic divisions.
             </p>
           </div>

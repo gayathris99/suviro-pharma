@@ -11,8 +11,8 @@ const QUOTES = [
     role: 'Senior Neurologist · Pune',
   },
   {
-    quote: "Suviro's gastro line has become a dependable part of our outpatient protocols.",
-    role: 'Gastroenterologist · Bengaluru',
+    quote: "Suviro's diabetic line has become a dependable part of our outpatient protocols.",
+    role: 'Diabetologist · Bengaluru',
   },
   {
     quote: 'Cardio formulations arrive properly stored, properly labelled, properly explained. Rare combination.',

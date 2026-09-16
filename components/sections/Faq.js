@@ -11,7 +11,7 @@ const FAQS = [
   },
   {
     q: 'How are your therapeutic divisions chosen?',
-    a: 'Neuro, Nephro, Cardio and Gastro represent areas of significant chronic-care burden in India where consistent supply and scientific clarity meaningfully improve outcomes.',
+    a: 'Neuro, Nephro, Cardio and Diabetic represent areas of significant chronic-care burden in India where consistent supply and scientific clarity meaningfully improve outcomes.',
   },
   {
     q: 'Are products available through retail pharmacies?',

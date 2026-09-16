@@ -40,7 +40,7 @@ export default function Hero() {
           <p className="hero-body">
           At Suviro, we are a pharmaceutical marketing company built on trust, ethics, and science —
           delivering dependable therapeutic solutions across Neurology, Nephrology,
-          Cardiology, and Gastroenterology.
+          Cardiology, and Diabetology.
           </p>
           <div className="hero-buttons">
             <Link href="/products" className="hero-btn hero-btn--fill">

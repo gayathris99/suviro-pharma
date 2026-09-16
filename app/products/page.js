@@ -5,7 +5,7 @@ import './products.css'
 
 export const metadata = {
   title: 'Products — Suviro Pharmalife',
-  description: 'Explore our range of pharmaceutical formulations across neuro, nephro, cardio and gastro therapeutic divisions.',
+  description: 'Explore our range of pharmaceutical formulations across neuro, nephro, cardio and diabetic therapeutic divisions.',
 }
 
 export default async function ProductsPage() {
